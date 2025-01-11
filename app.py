@@ -1,4 +1,4 @@
-from flask import Flask, Blueprint
+from flask import Flask
 import graphene
 from graphene import ObjectType, String, List
 from pymongo import MongoClient
@@ -12,10 +12,8 @@ import jwt
 # Flask App
 app = Flask(__name__)
 
-inventory_bp = Blueprint('inventory', __name__, url_prefix='/inventory')
-
 # MongoDB Setup (replace with your own MongoDB URI)
-AUTH_URL = os.getenv("AUTHENTICATION_URL", "http://web-auth:8000")
+AUTH_URL = os.getenv("AUTHENTICATION_URL")
 MONGO_URI = os.getenv("MONGO_URI")
 
 client = MongoClient(MONGO_URI)
@@ -268,7 +266,7 @@ schema = graphene.Schema(query=Query, mutation=Mutation)
 
 
 # GraphQL Endpoint
-@inventory_bp.route("/graphql", methods=["GET", "POST"])
+@app.route("/inventory/graphql", methods=["GET", "POST"])
 def graphql_server():
     from flask import request, jsonify
     if request.method == "GET":
@@ -285,7 +283,7 @@ def graphql_server():
                 <script>
                     window.addEventListener('DOMContentLoaded', function() {
                         GraphQLPlayground.init(document.getElementById('root'), {
-                            endpoint: '/graphql',
+                            endpoint: '/inventory/graphql',
                         });
                     });
                 </script>
@@ -296,12 +294,13 @@ def graphql_server():
         from graphene import Schema
         data = request.get_json()
         query = data.get('query')
+        print(query)
         result = schema.execute(query)
         print(result)
         return jsonify(result.data)
     
 
-@inventory_bp.route("/healthz")
+@app.get("/inventory/healthz")
 def health_check():
     """
     Health check endpoint.

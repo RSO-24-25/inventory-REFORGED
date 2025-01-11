@@ -13,7 +13,7 @@ service:
   port: 3000
 
 env:
-  AUTHENTICATION_URL: "http://web-auth:8000"
+  AUTHENTICATION_URL: "http://web-auth:8000/web-auth"
   MONGO_URI: "mongodb+srv://mongodb:galjetaksef123!@mongoloidgal.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
 
 
