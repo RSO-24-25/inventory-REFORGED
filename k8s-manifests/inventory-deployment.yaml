@@ -16,13 +16,11 @@ spec:
       - name: inventory
         image: rsocontainerregistry.azurecr.io/inventory:latest
         ports:
-        - containerPort: 8501
+        - containerPort: 3000
         env:
-        - name: WEATHER_API_KEY
-          value: "bfb8dccd0b442d975ff062d1f67e9ec8"
-        - name: NEWS_API_KEY
-          value: "c061ba6443df4b2997b094811d29c11e"
         - name: AUTHENTICATION_URL
           value: "http://web-auth:8000"
+        - name: MONGO_URI
+          value: "mongodb+srv://mongodb:galjetaksef123!@mongoloidgal.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
 
 
