@@ -314,4 +314,5 @@ def health_check():
         raise HTTPException(status_code=500, detail=f"Health check failed: {str(e)}")
 
 if __name__ == '__main__':
+    print("ok")
     app.run(host='0.0.0.0', port=3000)
