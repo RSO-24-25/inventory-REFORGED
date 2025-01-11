@@ -185,12 +185,12 @@ class Query(ObjectType):
 
     def resolve_products_by_token(self, info, token):
         print("fetching products...")
-        print(token)
+        print(token[:10])
         url = AUTH_URL + "/user-info"
         headers = {"Authorization": f"Bearer {token}"}
         decoded_token = jwt.decode(token, options={"verify_signature": False})
         roles = decoded_token.get("resource_access", {}).get("myclient", {}).get("roles", [])
-
+        
         if "sefgal" in roles:
             print("User has the 'sefgal' role!")
             products = products_collection.find()
@@ -201,7 +201,7 @@ class Query(ObjectType):
                             "owner_email": product["owner_email"]} for product in products]
             
             print(f"Products found: {product_list}")  # Debugging the returned products
-            
+       
             return product_list
         else:
             print("User does not have the 'sefgal' role.")
@@ -211,7 +211,7 @@ class Query(ObjectType):
 
                 user_info = response.json()
                 products = products_collection.find({"owner_email": user_info['email']})
-
+                print(f"Products found: {product_list}")
 
                 return [
                     {
