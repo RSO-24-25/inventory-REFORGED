@@ -13,9 +13,9 @@ import jwt
 app = Flask(__name__)
 
 # MongoDB Setup (replace with your own MongoDB URI)
-# AUTH_URL = os.getenv("AUTHENTICATION_URL", "http://web-auth:8000")
-AUTH_URL = "http://localhost:8000"
-MONGO_URI = "mongodb+srv://mongodb:galjetaksef123!@mongoloidgal.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000"
+AUTH_URL = os.getenv("AUTHENTICATION_URL", "http://web-auth:8000")
+MONGO_URI = os.getenv("MONGO_URI")
+
 client = MongoClient(MONGO_URI)
 db = client.inventory_db  # Name of your database
 users_collection = db.users  # Name of your collection
