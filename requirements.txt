@@ -5,3 +5,4 @@ flask
 graphql-core
 fastapi
 requests
+jwt
