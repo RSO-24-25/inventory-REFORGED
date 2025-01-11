@@ -315,4 +315,8 @@ def health_check():
 
 if __name__ == '__main__':
     print("ok")
-    app.run(host='0.0.0.0', port=3000)
+    print("ok")
+    print("ok")
+    print("ok")
+    print("ok")
+    app.run(host='0.0.0.0', port=3001)
