@@ -6,22 +6,6 @@ services:
     build: .
     container_name: flask-app
     ports:
-      - "5000:5000"
+      - "8601:8601"
     environment:
-      - MONGO_URI=mongodb://mongo:27017/inventory_db  # MongoDB URI for Flask to use
-    volumes:
-      - .:/app
-    depends_on:
-      - mongo
-
-  # MongoDB
-  mongo:
-    image: mongo:latest
-    container_name: mongo-db
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo_data:/data/db  # Persists the data on your local machine
-
-volumes:
-  mongo_data:
+      - MONGO_URI=mongodb+srv://mongodb:galjetaksef123!@mongoloidgal.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000  # MongoDB URI for Flask to use

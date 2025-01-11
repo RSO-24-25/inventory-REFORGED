@@ -3,10 +3,8 @@ FROM python:3.9-slim
 WORKDIR /app
 COPY . /app
 
-RUN pip install flask pymongo
+RUN pip install --no-cache-dir -r requirements.txt
 
-ENV MONGO_URI=mongodb+srv://mongodb:galjetaksef123!@mongoloidgal.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000
-
-EXPOSE 5000
+EXPOSE 8601
 
 CMD ["python", "app.py"]

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inventory
+  template:
+    metadata:
+      labels:
+        app: inventory
+    spec:
+      containers:
+      - name: inventory
+        image: rsocontainerregistry.azurecr.io/inventory:latest
+        ports:
+        - containerPort: 8501
+        env:
+        - name: WEATHER_API_KEY
+          value: "bfb8dccd0b442d975ff062d1f67e9ec8"
+        - name: NEWS_API_KEY
+          value: "c061ba6443df4b2997b094811d29c11e"
+        - name: AUTHENTICATION_URL
+          value: "http://web-auth:8000"
+
+

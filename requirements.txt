@@ -1,0 +1,7 @@
+graphene
+flask-graphql
+pymongo
+flask
+graphql-core
+fastapi
+requests
