@@ -193,7 +193,10 @@ class Query(ObjectType):
         
         if "sefgal" in roles:
             print("User has the 'sefgal' role!")
+            print(MONGO_URI)
             products = products_collection.find()
+            print("succes!")
+
             product_list = [{"id": str(product["_id"]),
                             "name": product["name"],
                             "description": product["description"],
