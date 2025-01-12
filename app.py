@@ -293,11 +293,13 @@ def graphql_server():
     elif request.method == "POST":
         from graphene import Schema
         app.logger.info("haha")
-        
+        print("haha")
         data = request.get_json()
         query = data.get('query')
+        print(query)
         app.logger.info(f"Qeury data: {query}")
         result = schema.execute(query)
+        print(result)
         app.logger.info(f"Request data: {data}")
         return jsonify(result.data)
     
