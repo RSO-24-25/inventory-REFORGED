@@ -229,7 +229,7 @@ class Query(ObjectType):
                         "name": product["name"],
                         "description": product["description"],
                         "quantity": product["quantity"],
-                        "ownerEmail": product["owner_email"]
+                        "owner_email": product["owner_email"]
                     }
                     for product in products
                 ]
