@@ -167,7 +167,11 @@ class Query(ObjectType):
         try:
             # Convert the string id to an ObjectId for MongoDB
             product_id = ObjectId(id)
+            print("fetching products by id:")
+            print(product_id)
             product = products_collection.find_one({"_id": product_id})
+            print("succes")
+            print(product)
             # print(id)
             # print(product_id)
             # print(product)
@@ -213,6 +217,8 @@ class Query(ObjectType):
                 response.raise_for_status()  
 
                 user_info = response.json()
+                print("User info:")
+                print(user_info)
                 products = products_collection.find({"owner_email": user_info['email']})
                 print(f"Products found: {product_list}")
 
