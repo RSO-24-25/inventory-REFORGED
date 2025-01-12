@@ -292,12 +292,13 @@ def graphql_server():
         """
     elif request.method == "POST":
         from graphene import Schema
-        print("haha")
+        app.logger.info("haha")
+        
         data = request.get_json()
         query = data.get('query')
-        print(query)
+        app.logger.info(f"Qeury data: {query}")
         result = schema.execute(query)
-        print(result)
+        app.logger.info(f"Request data: {data}")
         return jsonify(result.data)
     
 
@@ -314,9 +315,10 @@ def health_check():
         raise HTTPException(status_code=500, detail=f"Health check failed: {str(e)}")
 
 if __name__ == '__main__':
-    print("ok")
+    app.logger.info("jajaj")
     print("hahah")
     print("ok")
     print("matejči mateo kovačič")
     print("ok")
     app.run(host='0.0.0.0', port=3000, debug=True)
+    
