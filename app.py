@@ -200,6 +200,7 @@ class Query(ObjectType):
             print(MONGO_URI)
             products = products_collection.find()
             print("succes!")
+            # print()
 
             product_list = [{"id": str(product["_id"]),
                             "name": product["name"],
@@ -220,7 +221,7 @@ class Query(ObjectType):
                 print("User info:")
                 print(user_info)
                 products = products_collection.find({"owner_email": user_info['email']})
-                print(f"Products found: {product_list}")
+                print(f"Products found: {products}")
 
                 return [
                     {
